@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+  <title>Penguin Focus Buddy: Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <h1>Settings</h1>
+  <p id="connection" class="status">Checking browser extension…</p>
+  <section id="setup" class="setup">
+    <strong>Connect your browser (one time only)</strong>
+    <ol>
+      <li>In Chrome, type <b>chrome://extensions</b> in the address bar and press Enter.</li>
+      <li>Turn on <b>Developer mode</b> (top right).</li>
+      <li>Click <b>Load unpacked</b> and choose the penguin's extension folder.</li>
+    </ol>
+    <p class="hint">To get the folder: press the button below, then copy the address from the window that opens and paste it into Chrome's folder picker.</p>
+  </section>
+  <button id="extension" type="button" class="link">Open extension folder</button>
+
+  <form id="form">
+    <div class="row">
+      <label>Focus (minutes)<input id="focusMinutes" type="number" min="1" max="180" required></label>
+      <label>Break (minutes)<input id="breakMinutes" type="number" min="1" max="60" required></label>
+      <label>Warning (seconds)<input id="graceSeconds" type="number" min="0" max="120" required></label>
+    </div>
+    <label>Blocked sites (one per line)
+      <textarea id="blockedSites" rows="10" spellcheck="false" placeholder="facebook.com"></textarea>
+    </label>
+    <p class="hint">Warning 0 means the penguin kicks the tab as soon as you open it.</p>
+    <p class="hint">Sites are blocked only while a focus timer is running. Ctrl+Shift+T brings a kicked tab back, but unsaved text may be lost.</p>
+    <button type="submit">Save</button>
+    <span id="saved" role="status"></span>
+  </form>
+  <script src="settings.js"></script>
+</body>
+</html>

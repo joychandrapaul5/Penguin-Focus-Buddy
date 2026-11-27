@@ -1,0 +1,49 @@
+{
+  "name": "penguin-focus-buddy",
+  "productName": "Penguin Focus Buddy",
+  "version": "1.7.0",
+  "description": "A baby desktop penguin that guards your focus time and reminds you to take breaks.",
+  "main": "main.js",
+  "author": "Zaki Chowdhury",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "dist": "electron-builder --win nsis"
+  },
+  "dependencies": {
+    "ws": "^8.23.0"
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0"
+  },
+  "build": {
+    "appId": "com.zaki.penguinfocusbuddy",
+    "files": [
+      "main.js",
+      "preload.js",
+      "src/**/*",
+      "renderer/**/*",
+      "assets/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "extension",
+        "to": "extension"
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.png"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "artifactName": "Penguin-Focus-Buddy-Setup-${version}.${ext}"
+    }
+  }
+}

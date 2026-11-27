@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { margin: 0; padding: 22px; font: 14px/1.45 "Segoe UI", system-ui, sans-serif; color: #16324f; background: #f4faff; }
+h1 { margin: 0 0 10px; font-size: 20px; }
+.status { margin: 0 0 4px; font-weight: 600; color: #b4232a; }
+.status.ok { color: #1b7f4b; }
+.setup { margin: 10px 0; padding: 10px 14px; background: #fff; border: 1px solid #b9d6ea; border-radius: 10px; }
+.setup[hidden] { display: none; }
+.setup ol { margin: 6px 0; padding-left: 20px; }
+.setup .hint { margin: 0; }
+label { display: block; margin-top: 16px; font-weight: 600; }
+.row { display: flex; gap: 10px; }
+.row label { flex: 1; }
+input, textarea { display: block; width: 100%; margin-top: 5px; padding: 8px 10px; font: inherit; font-weight: 400; color: inherit; background: #fff; border: 1px solid #b9d6ea; border-radius: 8px; }
+textarea { resize: vertical; }
+input:focus, textarea:focus, button:focus-visible { outline: 2px solid #1273b5; outline-offset: 1px; }
+.hint { font-size: 12px; color: #55708a; }
+button { padding: 9px 22px; font: 600 14px "Segoe UI", system-ui, sans-serif; color: #fff; background: #1273b5; border: 0; border-radius: 999px; cursor: pointer; }
+button.link { padding: 0; color: #1273b5; background: none; text-decoration: underline; border-radius: 0; }
+#saved { margin-left: 10px; color: #1b7f4b; }

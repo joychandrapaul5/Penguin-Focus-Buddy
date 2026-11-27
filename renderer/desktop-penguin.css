@@ -1,0 +1,80 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  color: #16324f;
+  user-select: none;
+}
+
+#bubble {
+  position: relative;
+  width: 224px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+  text-align: center;
+  background: #fff;
+  border: 2px solid #9ccfee;
+  border-radius: 16px;
+}
+#bubble::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 12px;
+  height: 12px;
+  background: inherit;
+  border: solid #9ccfee;
+  border-width: 0 2px 2px 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+#message { font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
+#timer { font-size: 24px; font-weight: 700; font-variant-numeric: tabular-nums; }
+#buttons { display: flex; justify-content: center; gap: 6px; margin-top: 7px; }
+
+button {
+  font: 600 12px "Segoe UI", system-ui, sans-serif;
+  white-space: nowrap;
+  padding: 5px 10px;
+  color: #16324f;
+  background: #e8f5fd;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+button:hover { background: #d3ecfb; }
+button:focus-visible { outline: 2px solid #1273b5; }
+#primary { color: #fff; background: #1273b5; }
+#primary:hover { background: #0e5f96; }
+[hidden] { display: none !important; }
+
+#penguin { width: 160px; height: 170px; cursor: grab; touch-action: none; }
+#penguin:active { cursor: grabbing; }
+
+body.warn #bubble { background: #fff0f0; border-color: #e5484d; }
+body.warn #bubble::after { border-color: #e5484d; }
+
+#minimize {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  font-size: 15px;
+  line-height: 20px;
+}
+#message { padding: 0 20px; }
+
+/* Minimized: only a small penguin, with the timer above it. */
+html.mini #bubble { display: none; }
+html.mini #penguin { width: 64px; height: 68px; }
+#chip { min-width: 64px; font-variant-numeric: tabular-nums; border: 2px solid #9ccfee; background: #fff; }
+body.warn #chip { color: #b4232a; border-color: #e5484d; background: #fff0f0; }

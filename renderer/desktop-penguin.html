@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+  <title>Penguin</title>
+  <link rel="stylesheet" href="penguin.css">
+  <link rel="stylesheet" href="desktop-penguin.css">
+</head>
+<body class="idle">
+  <div id="bubble" class="hit" role="status">
+    <button id="minimize" type="button" title="Minimize" aria-label="Minimize penguin">&#8211;</button>
+    <p id="message">Hi! Ready to focus?</p>
+    <p id="timer" hidden></p>
+    <div id="buttons">
+      <button id="primary">Start focus</button>
+      <button id="stop" hidden>Stop</button>
+      <button id="settings">Settings</button>
+    </div>
+  </div>
+
+  <button id="chip" class="hit" type="button" title="Show penguin" hidden></button>
+  <div id="penguin-slot"></div>
+  <script src="penguin-art.js"></script>
+  <script src="desktop-penguin.js"></script>
+</body>
+</html>

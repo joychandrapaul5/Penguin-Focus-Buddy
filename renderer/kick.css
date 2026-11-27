@@ -1,0 +1,76 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: transparent; user-select: none; }
+[hidden] { display: none !important; }
+
+/* #walker is moved around the screen; #pose tilts and squashes the penguin. */
+#walker { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+#pose { position: absolute; left: -80px; top: -85px; width: 160px; height: 170px; }
+#penguin, #side { position: absolute; left: 0; top: 0; width: 160px; height: 170px; overflow: visible; }
+.shadow { display: none; }
+
+/* front view normally, side view while walking or kicking */
+#side, #pose.side #penguin { display: none; }
+#pose.side #side { display: block; }
+#pose.back #side { transform: scaleX(-1); } /* walking home, facing right */
+
+.shin { stroke: #ff9f1c; stroke-width: 10; stroke-linecap: round; }
+.tail { fill: #7f91a4; }
+.wing { fill: #8d9fb2; stroke: #6f8296; stroke-width: 2; }
+.brow { stroke: #141c27; stroke-width: 4.5; stroke-linecap: round; }
+.leg.far { filter: brightness(.82); }
+.leg.near { transform-origin: 70px 134px; }
+.leg.far { transform-origin: 92px 132px; }
+.wing { transform-origin: 88px 94px; }
+.torso { transform-origin: 80px 140px; }
+
+#pose.walking .leg.near { animation: step .26s ease-in-out infinite; }
+#pose.walking .leg.far { animation: step .26s ease-in-out -.13s infinite; }
+#pose.walking .torso { animation: bob .13s ease-in-out infinite alternate; }
+#pose.walking .wing { animation: swing .26s ease-in-out infinite alternate; }
+
+.leg { transition: transform .09s ease-out; }
+#pose.kicking .leg.near { transform: rotate(8deg) scale(1.15, 1.75); }
+#pose.kicking .leg.far { transform: rotate(-38deg); }
+#pose.kicking .wing { transform: rotate(-75deg); }
+
+/* each foot swings back on the ground, then lifts as it comes forward */
+@keyframes step {
+  0%, 100% { transform: translate(0, 0) rotate(34deg); }
+  50% { transform: translate(0, 0) rotate(-30deg); }
+  75% { transform: translate(0, -11px) rotate(2deg); }
+}
+@keyframes bob { from { transform: translateY(0) rotate(-6deg); } to { transform: translateY(-7px) rotate(3deg); } }
+@keyframes swing { from { transform: rotate(-24deg); } to { transform: rotate(20deg); } }
+
+#ghost {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 34px;
+  padding: 0 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  font: 600 13px "Segoe UI", system-ui, sans-serif;
+  color: #16324f;
+  background: #fff;
+  border: 1px solid #b9d6ea;
+  border-radius: 10px 10px 4px 4px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .3);
+}
+#host { overflow: hidden; text-overflow: ellipsis; }
+
+#spark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  margin: -25px 0 0 -25px;
+  background: #ffd43b;
+  border: 0;
+  clip-path: polygon(50% 0, 61% 32%, 93% 15%, 72% 46%, 100% 60%, 66% 64%, 75% 98%, 50% 73%, 24% 98%, 33% 64%, 0 60%, 28% 46%, 7% 15%, 39% 32%);
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+  <title>Penguin kick</title>
+  <link rel="stylesheet" href="penguin.css">
+  <link rel="stylesheet" href="kick.css">
+</head>
+<body class="warn">
+  <div id="ghost" hidden><span id="host"></span><span aria-hidden="true">×</span></div>
+  <div id="spark" hidden></div>
+  <div id="walker" hidden>
+    <div id="pose">
+      <div id="penguin-slot"></div>
+      <!-- side view, facing left, used for walking and kicking -->
+      <svg id="side" viewBox="0 0 160 170" aria-hidden="true">
+        <g class="leg far"><path class="shin" d="M92 130 L92 153"/><path class="foot" d="M99 152 C99 160 94 161 86 161 L68 161 C66 154 78 148 90 148 C96 148 99 149 99 152 Z"/></g>
+        <g class="torso">
+          <path class="tail" d="M118 122 L146 140 L112 143 Z"/>
+          <path class="fluff" d="M74 22 C108 20 120 48 118 72 C136 94 134 146 84 148 C38 150 30 108 42 82 C36 52 46 24 74 22 Z"/>
+          <path class="belly" d="M46 86 C34 110 42 140 72 143 C90 130 86 94 46 86 Z"/>
+          <path class="cap" d="M74 22 C104 20 119 44 117 68 C115 90 96 96 74 92 C54 88 40 76 40 58 C40 38 52 24 74 22 Z"/>
+          <path class="face" d="M60 44 C78 38 90 52 87 68 C84 84 66 88 52 82 C42 76 42 52 60 44 Z"/>
+          <path class="tuft" d="M72 24 C66 12 75 8 77 17 C82 9 91 13 82 24"/>
+          <g class="eyes"><circle cx="58" cy="62" r="6"/><circle class="shine" cx="56" cy="60" r="2"/></g>
+          <path class="brow" d="M47 48 L68 55"/>
+          <path class="beak" d="M46 69 C34 68 25 73 22 76 C28 82 38 84 47 81 Z"/>
+          <ellipse class="cheek" cx="68" cy="76" rx="7" ry="4"/>
+          <path class="wing" d="M86 90 C106 94 118 118 108 128 C96 128 82 110 80 96 C80 91 82 89 86 90 Z"/>
+        </g>
+        <g class="leg near"><path class="shin" d="M70 132 L70 155"/><path class="foot" d="M77 154 C77 162 72 163 64 163 L44 163 C42 156 56 150 68 150 C74 150 77 151 77 154 Z"/></g>
+      </svg>
+    </div>
+  </div>
+  <script src="penguin-art.js"></script>
+  <script src="kick.js"></script>
+</body>
+</html>

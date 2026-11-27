@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Penguin Focus Buddy",
+  "version": "1.5.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxGZfC/58xVb//wgngHSuYt6PP2pyRVeXIBVzSRohca12qXB0PRiANycSsfcuO/t/tf4x81cxxda8cM1nmSzthPYTULiXIHdhL6SLKRfsLMfCSAC9iIOHI8RKuDVlQcwCXlQFDM7R59qGI7N/2X4Bhz3hjPLlQMLJaIVxjqEdzAGtQe61PF2hwW7dgDC3uCZ81w6C7M7gD5stHt9WYSSIXFwnrjW+2r2k8q/B2OPAStY9Gr6IFW7E8v2MTtPaBMXL57Cx1n1fnKvmVWg05gRhn+KCS1S98ZKjwgFgx6Xh+X82oaApi64Fu07KvdTQMv6q7f0+7xDLQdDasi1RXVfsKQIDAQAB",
+  "description": "Lets the Penguin desktop app close distracting tabs during focus time.",
+  "minimum_chrome_version": "116",
+  "permissions": ["tabs", "alarms", "sessions"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "background": { "service_worker": "background.js" },
+  "icons": { "128": "icon.png" }
+}
