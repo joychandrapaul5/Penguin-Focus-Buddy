@@ -2,57 +2,68 @@
 
 A baby penguin that sits on your Windows desktop, closes distracting tabs while you focus, and reminds you to take breaks.
 
-## Install kora (shobar jonno, shohoj)
+**[Download the latest installer](https://github.com/joychandrapaul5/Penguin-Focus-Buddy/releases/latest)** (Windows 64-bit, Google Chrome)
 
-1. GitHub page er **Releases** theke `Penguin-Focus-Buddy-Setup-1.7.0.exe` download kore double-click korun. Node.js ba terminal lagbe na.
-2. "Windows protected your PC" ashle **More info** > **Run anyway** chapun (app e paid signature nei, tai ei warning).
-3. Install nijei hobe, app chalu hobe, desktop e shortcut ashbe.
-4. Prothombar Settings khulbe. Sekhane lekha 3 ta step e Chrome extension ta ekbar add korun.
+## Install
 
-## Source code theke chalano (developer)
+1. Download `Penguin-Focus-Buddy-Setup-1.7.0.exe` from the **Releases** page and double-click it. You do not need Node.js or a terminal.
+2. If Windows shows "Windows protected your PC", click **More info** > **Run anyway**. The warning appears because the app is not code signed.
+3. The app installs itself, starts, and adds a desktop shortcut.
+4. On the first run the **Settings** window opens. Connect your browser once, as described below.
 
-1. **Node.js** na thakle https://nodejs.org theke LTS version (22.12 ba notun) install korun.
-2. Ei folder er **start.bat** double-click korun. Prothombar internet lagbe, koyek minute somoy nibe.
-3. Chrome e `chrome://extensions` khulun, upore dane **Developer mode** on korun.
-4. **Load unpacked** click kore ei folder er **extension** folder ta select korun.
-5. Penguin er **Settings** e "Browser extension connected" lekha ashle sob ready.
+## Connect Chrome (one time only)
 
-## Babohar
+1. In **Settings**, click **Open extension folder** and copy the address of the folder that opens.
+2. Open `chrome://extensions` and turn on **Developer mode** (top right).
+3. Click **Load unpacked**, paste the address into the folder picker, and select the folder.
+4. **Pin** the penguin extension to the toolbar, just left of the puzzle icon, so the kicking penguin starts from the right place.
+5. When Settings shows "Browser extension connected", you are ready.
 
-- **Focus** chaplei timer shuru hoy.
-- Focus er somoy blocked site khulle toolbar er penguin icon theke arekta penguin ber hoy, tab bar dhore hete ese lathi mare (Settings e Warning 0 er beshi dile age warning dibe), tab ta ghurte ghurte ude jay ar close hoy.
-- Update er por `chrome://extensions` e extension er reload icon chapun, ar app bondho kore abar chalu korun.
-- Lathi marar penguin er jonno extension icon ta toolbar e **pin** kore puzzle icon er thik bame rakhun.
-- Lathir jaygata Chrome er window dekhe andaz kora hoy; tab group ba vertical tab thakle ektu edik-odik hote pare.
-- Focus sesh hole break shuru hoy ar notification ashe.
-- Desktop er penguin boro ba chhoto, duto obosthatei mouse diye dhore sorano jay. Jaygata mone thake.
-- Bubble er **–** button e penguin chhoto hoy. Chhoto penguin ba timer e click korle abar boro hoy. Tray menu thekeo kora jay, ar app bondho korle o pochhonder size mone thake.
-- Hide, Settings ar Quit: ghori r pashe tray icon e right-click.
+## Use
 
-## Janar bishoy
+- Press **Focus** to start the timer.
+- If you open a blocked site during focus, a small penguin comes out of the toolbar icon, walks along the tab bar and kicks the tab away. With a warning time above 0, it warns you first.
+- Press **Ctrl+Shift+T** to bring a kicked tab back. That tab is left alone for the rest of the focus round. Opening the site again gets it kicked again.
+- When focus ends, a break starts and you get a notification.
+- Drag the desktop penguin anywhere with the mouse, big or small. It remembers the spot.
+- The **–** button makes the penguin small. Click the small penguin or its timer to make it big again.
+- Right-click the tray icon near the clock to show or hide the penguin, open Settings, or quit.
 
-- Lathi khawa tab **Ctrl+Shift+T** diye fire ana jay. Fire ana oi tab ta oi focus round e ar lathi khay na; notun kore khulle khay.
-- Tab close hole oi page er save na kora lekha harate pare.
-- Extension shudhu site er naam (jemon `youtube.com`) apnar PC r bhitorei app ke pathay.
-- Incognito te kaj korate extension er Details e **Allow in Incognito** on korun.
-- Settings save hoy `data/settings.json` e (installer version e Windows er AppData te).
-- Port `47821` babohar hoy.
-- App shudhu ei folder er extension ke connect korte dey. `manifest.json` er `key` line ta bodlaben na.
-- `extension.pem` (Pack extension korle toiri hoy) gopon chabi. Kauke diben na, upload korben na.
+## Good to know
 
-## Developer
+- Closing a tab may lose text you have not saved on that page.
+- Sites are blocked only while a focus timer is running.
+- The extension sends only the site name (for example `youtube.com`), tab number and window size, and only to the app on your own computer.
+- To use it in Incognito, turn on **Allow in Incognito** in the extension's Details.
+- The app does not start with Windows and does not update itself.
+- Settings are saved in `%APPDATA%\Penguin Focus Buddy\settings.json` (`data/settings.json` when run from source).
+- The app uses port `47821`.
+- Only this extension may connect to the app. Do not change the `key` line in `extension/manifest.json`.
+- An `extension.pem` file (created by Chrome's "Pack extension") is a private key. Never share or upload it.
+
+## Run from source
+
+Install the LTS version of [Node.js](https://nodejs.org) (22.12 or newer), then double-click `start.bat`, or use:
 
 ```
-npm test        # logic test
-npm start       # app chalano
-npm run dist    # dist/ folder e Windows installer banano
+npm install     # first time only
+npm start       # run the app
+npm test        # logic tests
+npm run dist    # build the Windows installer into dist/
 ```
 
-| File | Kaj |
+Then load the `extension` folder of the project in Chrome. After changing extension files, press the reload icon in `chrome://extensions`.
+
+| File | Purpose |
 |---|---|
-| `main.js` | Electron window, tray, notification |
-| `src/focus.js` | Timer ar tab close korar niyom |
-| `src/server.js` | Extension er sathe local jogajog |
-| `src/kicker.js`, `renderer/kick.*` | Lathi marar animation |
-| `renderer/` | Penguin ar Settings er design |
+| `main.js` | Electron windows, tray, notifications |
+| `src/focus.js` | Timer and tab closing rules |
+| `src/server.js` | Local link to the extension |
+| `src/kicker.js`, `renderer/kick.*` | Kick animation |
+| `renderer/` | Penguin and Settings design |
 | `extension/` | Chrome extension |
+
+## Guides
+
+- [English guide (PDF)](Penguin-Focus-Buddy-English-Guide.pdf)
+- [Bangla guide (PDF)](Penguin-Focus-Buddy-Bangla-Guide.pdf)
